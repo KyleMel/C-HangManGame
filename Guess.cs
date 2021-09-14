@@ -22,12 +22,12 @@ namespace HangmanGame
         }
         public void DisplayWelcome() //Welcome Message
         {
-            HideAnswer();
             userinterface.Write($"Welcome to Hangman, Let's Play!\nThe words is {HideAnswer()} \nYou have {lives} lives!");
         }
         public void WordSoFar() //Displays hidden answer which will reveal more when correctly guess
         {
-            userinterface.Write($"Hangman Word: {HideAnswer()}\nYour guesses:{GuessList()} \nYou have {lives} remaining");
+            
+            userinterface.Write($"Hangman Word: {HideAnswer()}\nYour guesses:{GuessList()} \nYou have {lives} lives remaining");
         }
         public void GuessCheck() // if statements for if guess was correct or incorrect, subtacts lives
         {
@@ -37,13 +37,15 @@ namespace HangmanGame
             if (correct)
             {
                 guesses.Add(letter);
-                userinterface.Write("Correct!");
+                Console.Clear();
+                userinterface.Write("--Correct!--");
             }
             else
             {
                 lives--;
                 guesses.Add(letter);
-                userinterface.Write($"Incorrect!");
+                Console.Clear();
+                userinterface.Write($"--Incorrect!--");
             }
         }
         public bool Death() // returns true to game if lose statement
