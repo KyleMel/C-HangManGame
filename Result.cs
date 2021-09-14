@@ -16,13 +16,26 @@ namespace HangmanGame
         }
         public void Win()
         {
-            userinterface.Write("You Win!\nPress Enter to Quit: ");
-            Console.ReadKey();
+            userinterface.Write("You Win!");
         }
         public void Lose()
         {
             userinterface.Write("You Lose!\nPress Enter to Quit: ");
-            Console.ReadKey();
+        }
+        public bool KeepPlaying()
+        {
+            var yes = true;
+            var no = false;
+            Console.Write("Play Again? Y/N : ");
+            var choice = Console.ReadLine().ToUpper();
+            if (choice == "Y")
+            {
+                return yes;
+            }
+            else
+            {
+                return no;
+            }
         }
     }
 }

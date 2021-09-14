@@ -25,6 +25,7 @@ namespace HangmanGame
         {
             guess.DisplayWelcome();
             GuessLoop();
+            ContinuePlaying();
         }
         public void GuessLoop()
         {
@@ -55,6 +56,19 @@ namespace HangmanGame
                 continueGame = true;
             }
             return continueGame;
+        }
+        public void ContinuePlaying()
+        {
+            if (result.KeepPlaying() == true)
+            {
+                Console.Clear();
+                Game game = new Game();
+                game.Run();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
