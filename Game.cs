@@ -24,6 +24,36 @@ namespace HangmanGame
         public void Run()
         {
             guess.DisplayWelcome();
+            GuessLoop();
+        }
+        public void GuessLoop()
+        {
+            var continueGame = true;
+
+            while (continueGame)
+            {
+                guess.GuessCheck();
+                continueGame = CheckLives();
+            }
+        }
+        public bool CheckLives()
+        {
+            bool continueGame;
+            if (guess.Death())
+            {
+                result.Lose();
+                continueGame = false;
+            }
+            else if (guess.CheckWin())
+            {
+                result.Win();
+                continueGame = false;
+            }
+            else
+            {
+                continueGame = true;
+            }
+            return continueGame;
         }
     }
 }

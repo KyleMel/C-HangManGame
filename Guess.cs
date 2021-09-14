@@ -25,6 +25,39 @@ namespace HangmanGame
             HideAnswer();
             userinterface.Write($"Welcome to Hangman, Let's Play!\nThe words is {HideAnswer()} \nYou have {lives} lives!");
         }
+        public void GuessCheck() // if statements for if guess was correct or incorrect, subtacts lives
+        {
+            letter = userinterface.Input("Please enter a letter to guess: ");
+            var correct = IsLetterInAnswer(letter);
+
+            if (correct)
+            {
+                guesses.Add(letter);
+                userinterface.Write("Correct!");
+            }
+            else
+            {
+                lives--;
+                guesses.Add(letter);
+                userinterface.Write($"Incorrect! You have {lives} remaining.");
+            }
+        }
+        public bool Death() // returns true to game if lose statement
+        {
+            return lives < 1;
+        }
+        public bool CheckWin() // checks to see if see if any hidden characters remain
+        {
+            foreach (var let in answer)
+            {
+                if (!guesses.Contains(let)) return false;
+            }
+            return true;
+        }
+        public bool IsLetterInAnswer(char letter) // does actually check against answer
+        {
+            return answer.Contains(letter);
+        }
         public string HideAnswer() //intially hides answer and then replaces "*" with correct character if guess is correct
         {
             var sb = new StringBuilder();
