@@ -33,6 +33,7 @@ namespace HangmanGame
             while (continueGame)
             {
                 guess.GuessCheck();
+                guess.WordSoFar();
                 continueGame = CheckLives();
             }
         }
