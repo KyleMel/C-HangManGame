@@ -21,5 +21,9 @@ namespace HangmanGame
             int guesses = 6;
             guess = new Guess(guesses, answer);
         }
+        public void Run()
+        {
+            guess.DisplayWelcome();
+        }
     }
 }
